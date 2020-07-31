@@ -18,6 +18,10 @@ function tellMe(joke){
     });
 }
 
+function toggleButton(){
+    button.disabled = !button.disabled;
+}
+
 // Get Jokes from Joke Api and write async function
 async function getJoke(){
     let joke = ''
@@ -36,9 +40,13 @@ async function getJoke(){
 
         tellMe(joke)
 
+        toggleButton() 
+
     }catch(err){
         console.log("Error is:",err)
     }
 }
 
 button.addEventListener('click', getJoke)
+
+audioElement.addEventListener('ended', toggleButton)
